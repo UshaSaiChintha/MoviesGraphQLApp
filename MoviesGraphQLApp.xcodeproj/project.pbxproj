@@ -28,6 +28,7 @@
 		4669C41E2A3865F50091DC91 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4669C41D2A3865F50091DC91 /* View+Extensions.swift */; };
 		4669C4202A3866090091DC91 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4669C41F2A3866090091DC91 /* String+Extensions.swift */; };
 		46CF75F72A38CDA1007F3396 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 46CF75F62A38CDA1007F3396 /* schema.json */; };
+		46CF75F92A38CF24007F3396 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CF75F82A38CF24007F3396 /* MovieListViewModel.swift */; };
 		46F507802A385F5200BFAA75 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F5077F2A385F5200BFAA75 /* API.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		4669C41D2A3865F50091DC91 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		4669C41F2A3866090091DC91 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		46CF75F62A38CDA1007F3396 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		46CF75F82A38CF24007F3396 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		46F5077F2A385F5200BFAA75 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 		4669C4212A38BA170091DC91 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				46CF75F82A38CF24007F3396 /* MovieListViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				4669C4192A3865C30091DC91 /* MovieListScreen.swift in Sources */,
 				4669C4122A38656A0091DC91 /* URLImage.swift in Sources */,
 				4669C40C2A3865260091DC91 /* Constants.swift in Sources */,
+				46CF75F92A38CF24007F3396 /* MovieListViewModel.swift in Sources */,
 				4669C40F2A3865430091DC91 /* ImageLoader.swift in Sources */,
 				4669C4162A38659F0091DC91 /* NoResultView.swift in Sources */,
 				46699B6B2A385D7000CB543E /* Apollo.swift in Sources */,

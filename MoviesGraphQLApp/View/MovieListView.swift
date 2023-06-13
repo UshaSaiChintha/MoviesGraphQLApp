@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MovieListView: View {
     
+    
+    let movies: [MovieViewModel]
     var onDeleteMovie: ((String) -> Void)?
     
     private func deleteMovie(at indexSet: IndexSet) {
@@ -17,20 +19,20 @@ struct MovieListView: View {
     
     var body: some View {
         List {
-            ForEach(1...20, id: \.self) { index in
+            ForEach(movies, id: \.id) { movie in
                 HStack {
-                    URLImage(url: "\(index)")
+                    URLImage(url: movie.poster)
                         .frame(width: 100, height: 150)
                         .clipShape(RoundedRectangle(cornerRadius: 16.0, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/))
                     VStack(alignment: .leading) {
-                        Text("Movie Name \(index)")
+                        Text(movie.title)
                             .padding(.top, 10)
                             .font(.headline)
-                        Text("Movie Year \(index)")
+                        Text(movie.year)
                             .font(.caption)
                         
                         HStack {
-                            Text("Movie Genre \(index)")
+                            Text(movie.genre)
                                 .font(.caption)
                                 .foregroundColor(.black)
                                 .padding(8)
@@ -52,6 +54,8 @@ struct MovieListView: View {
 
 struct MovieListView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListView()
+        let movie = GetAllMoviesQuery.Data.Movie(id: "1", title: "Lord of the Rings", year: "2002", genre: "Fantasy", poster: "")
+        
+        return MovieListView(movies: [MovieViewModel(movie: movie)])
     }
 }
