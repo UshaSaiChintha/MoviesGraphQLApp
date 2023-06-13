@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4659A8182A38F0B80084D8A8 /* AddMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659A8172A38F0B80084D8A8 /* AddMovieViewModel.swift */; };
+		4659A81A2A38F61A0084D8A8 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659A8192A38F61A0084D8A8 /* Webservice.swift */; };
+		4659A81C2A38F64D0084D8A8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659A81B2A38F64D0084D8A8 /* Movie.swift */; };
+		4659A81E2A38F87F0084D8A8 /* MoviePosterGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659A81D2A38F87F0084D8A8 /* MoviePosterGridView.swift */; };
 		46632B092A385CB3000B3B92 /* MoviesGraphQLAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46632B082A385CB3000B3B92 /* MoviesGraphQLAppApp.swift */; };
 		46632B0D2A385CB4000B3B92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46632B0C2A385CB4000B3B92 /* Assets.xcassets */; };
 		46632B102A385CB4000B3B92 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46632B0F2A385CB4000B3B92 /* Preview Assets.xcassets */; };
@@ -35,6 +39,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4659A8172A38F0B80084D8A8 /* AddMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieViewModel.swift; sourceTree = "<group>"; };
+		4659A8192A38F61A0084D8A8 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		4659A81B2A38F64D0084D8A8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4659A81D2A38F87F0084D8A8 /* MoviePosterGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterGridView.swift; sourceTree = "<group>"; };
+		4659A81F2A38FD2B0084D8A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		46632B052A385CB3000B3B92 /* MoviesGraphQLApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesGraphQLApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46632B082A385CB3000B3B92 /* MoviesGraphQLAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGraphQLAppApp.swift; sourceTree = "<group>"; };
 		46632B0C2A385CB4000B3B92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +102,7 @@
 		46632B072A385CB3000B3B92 /* MoviesGraphQLApp */ = {
 			isa = PBXGroup;
 			children = (
+				4659A81F2A38FD2B0084D8A8 /* Info.plist */,
 				466C68B42A38EFBF00A236D4 /* schema.json */,
 				4669C4232A38BA760091DC91 /* Model */,
 				4669C4222A38BA580091DC91 /* Service */,
@@ -151,6 +161,7 @@
 				4669C4132A3865850091DC91 /* MovieListView.swift */,
 				4669C4152A38659F0091DC91 /* NoResultView.swift */,
 				466C68B22A38DA3000A236D4 /* GenreSelectionView.swift */,
+				4659A81D2A38F87F0084D8A8 /* MoviePosterGridView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +189,7 @@
 			children = (
 				46CF75F82A38CF24007F3396 /* MovieListViewModel.swift */,
 				466C68B02A38D94E00A236D4 /* GenreListViewModel.swift */,
+				4659A8172A38F0B80084D8A8 /* AddMovieViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -185,6 +197,7 @@
 		4669C4222A38BA580091DC91 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				4659A8192A38F61A0084D8A8 /* Webservice.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -192,6 +205,7 @@
 		4669C4232A38BA760091DC91 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4659A81B2A38F64D0084D8A8 /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,11 +317,13 @@
 			files = (
 				4669C41B2A3865DD0091DC91 /* AddMovieScreen.swift in Sources */,
 				4669C4202A3866090091DC91 /* String+Extensions.swift in Sources */,
+				4659A81C2A38F64D0084D8A8 /* Movie.swift in Sources */,
 				4669C4192A3865C30091DC91 /* MovieListScreen.swift in Sources */,
 				4669C4122A38656A0091DC91 /* URLImage.swift in Sources */,
 				466C68B12A38D94E00A236D4 /* GenreListViewModel.swift in Sources */,
 				4669C40C2A3865260091DC91 /* Constants.swift in Sources */,
 				46CF75F92A38CF24007F3396 /* MovieListViewModel.swift in Sources */,
+				4659A8182A38F0B80084D8A8 /* AddMovieViewModel.swift in Sources */,
 				4669C40F2A3865430091DC91 /* ImageLoader.swift in Sources */,
 				4669C4162A38659F0091DC91 /* NoResultView.swift in Sources */,
 				46699B6B2A385D7000CB543E /* Apollo.swift in Sources */,
@@ -316,6 +332,8 @@
 				4669C41E2A3865F50091DC91 /* View+Extensions.swift in Sources */,
 				46632B092A385CB3000B3B92 /* MoviesGraphQLAppApp.swift in Sources */,
 				466C68B32A38DA3000A236D4 /* GenreSelectionView.swift in Sources */,
+				4659A81E2A38F87F0084D8A8 /* MoviePosterGridView.swift in Sources */,
+				4659A81A2A38F61A0084D8A8 /* Webservice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +464,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesGraphQLApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoviesGraphQLApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -474,6 +493,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesGraphQLApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoviesGraphQLApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

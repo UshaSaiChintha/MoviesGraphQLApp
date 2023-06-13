@@ -13,10 +13,23 @@ struct GenreSelectionView: View {
     
     @State private var selectedGenre: GenreViewModel = GenreViewModel.defaultGenre
     @StateObject private var genreListViewModel = GenreListViewModel()
+    var ignoreGenres: [String]?
     
+    func prepareGenres() -> [GenreViewModel] {
+        
+        guard let ignoreGenres = ignoreGenres else {
+            return genreListViewModel.genres
+        }
+        
+        return genreListViewModel.genres.filter { genre in
+            return !ignoreGenres.contains(genre.name)
+        }
+        
+    }
+
     var body: some View {
         Picker("Select", selection: $selectedGenre) {
-            ForEach(genreListViewModel.genres, id: \.id) { genre in
+            ForEach(prepareGenres(), id: \.id) { genre in
                 Text(genre.name).tag(genre)
             }
         }.pickerStyle(SegmentedPickerStyle())
