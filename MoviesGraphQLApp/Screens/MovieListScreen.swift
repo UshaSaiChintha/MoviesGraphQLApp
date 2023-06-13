@@ -13,15 +13,19 @@ struct MovieListScreen: View {
     @StateObject private var movieListViewModel = MovieListViewModel()
     @State private var isPresented: Bool = false
     
+    private func genreSelected(genreViewModel: GenreViewModel) {
+        switch genreViewModel.name {
+            case "All":
+            movieListViewModel.getAllMovies()
+            default:
+            movieListViewModel.getAllMovies(genre: genreViewModel.name)
+        }
+    }
+    
     var body: some View {
         VStack {
             
-            Picker("Select", selection: .constant("Foo")) {
-                Text("All")
-                Text("Fiction")
-                Text("Kids")
-                Text("Horror")
-            }.pickerStyle(SegmentedPickerStyle())
+            GenreSelectionView(onSelected: genreSelected)
             
             Spacer()
             
