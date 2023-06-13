@@ -4,6 +4,65 @@
 import Apollo
 import Foundation
 
+public struct MovieInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - id
+  ///   - title
+  ///   - year
+  ///   - genre
+  ///   - poster
+  public init(id: Swift.Optional<GraphQLID?> = nil, title: String, year: String, genre: String, poster: String) {
+    graphQLMap = ["id": id, "title": title, "year": year, "genre": genre, "poster": poster]
+  }
+
+  public var id: Swift.Optional<GraphQLID?> {
+    get {
+      return graphQLMap["id"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var title: String {
+    get {
+      return graphQLMap["title"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "title")
+    }
+  }
+
+  public var year: String {
+    get {
+      return graphQLMap["year"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "year")
+    }
+  }
+
+  public var genre: String {
+    get {
+      return graphQLMap["genre"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "genre")
+    }
+  }
+
+  public var poster: String {
+    get {
+      return graphQLMap["poster"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "poster")
+    }
+  }
+}
+
 public final class GetAllMoviesQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -221,6 +280,99 @@ public final class GetAllGenresQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+    }
+  }
+}
+
+public final class CreateMovieMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation CreateMovie($movie: MovieInput) {
+      addMovie(movie: $movie) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "CreateMovie"
+
+  public var movie: MovieInput?
+
+  public init(movie: MovieInput? = nil) {
+    self.movie = movie
+  }
+
+  public var variables: GraphQLMap? {
+    return ["movie": movie]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("addMovie", arguments: ["movie": GraphQLVariable("movie")], type: .object(AddMovie.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(addMovie: AddMovie? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addMovie": addMovie.flatMap { (value: AddMovie) -> ResultMap in value.resultMap }])
+    }
+
+    public var addMovie: AddMovie? {
+      get {
+        return (resultMap["addMovie"] as? ResultMap).flatMap { AddMovie(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "addMovie")
+      }
+    }
+
+    public struct AddMovie: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Movie"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID) {
+        self.init(unsafeResultMap: ["__typename": "Movie", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
     }
