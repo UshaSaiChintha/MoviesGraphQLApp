@@ -1,3 +1,9 @@
-query SayHello {
- hello
+query GetAllMovies {
+  movies {
+    id
+    title
+    year
+    genre
+    poster
+  }
 }
