@@ -10,6 +10,7 @@ import Combine
 
 struct MovieListScreen: View {
     
+    @StateObject private var movieListViewModel = MovieListViewModel()
     @State private var isPresented: Bool = false
     
     var body: some View {
@@ -24,9 +25,10 @@ struct MovieListScreen: View {
             
             Spacer()
             
-            // Show List of Movies
-            List(1...20, id: \.self) { index in
-                Text("Movie Name \(index)")
+            if !movieListViewModel.movies.isEmpty {
+                MovieListView(movies: movieListViewModel.movies)
+            } else {
+                NoResultView(message: "No movies found")
             }
             
             Spacer()
@@ -38,7 +40,7 @@ struct MovieListScreen: View {
             AddMovieScreen()
         })
         .onAppear(perform: {
-           
+            movieListViewModel.getAllMovies()
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
