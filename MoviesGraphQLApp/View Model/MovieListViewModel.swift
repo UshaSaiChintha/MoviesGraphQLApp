@@ -14,7 +14,7 @@ class MovieListViewModel: ObservableObject {
     
     func getAllMovies(genre: String? = nil) {
         
-        Network.shared.apollo.fetch(query: GetAllMoviesQuery(genre: genre)) { [weak self] result in
+        Network.shared.apollo.fetch(query: GetAllMoviesQuery(genre: genre), cachePolicy: .fetchIgnoringCacheData) { [weak self] result in
             
             switch result {
                 case .success(let graphQLResult):

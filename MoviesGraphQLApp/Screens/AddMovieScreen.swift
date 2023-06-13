@@ -9,21 +9,31 @@ import SwiftUI
 
 struct AddMovieScreen: View {
     
+    @StateObject private var addMovieViewModel = AddMovieViewModel()
     @Environment(\.presentationMode) private var presentationMode
     
     var body: some View {
         Form {
             
-            Text("TextField For the Name")
-            Text("TextField For the Year")
-            Text("Picker For the Genre Selection")
+            TextField("Name", text: $addMovieViewModel.name, onEditingChanged: { _ in }) {
+                // perform a REST api request to get the posters
+                addMovieViewModel.fetchPostersByMovieName(name: addMovieViewModel.name.encoded())
+            }
             
+            TextField("Year", text: $addMovieViewModel.year)
             
-            Text("Show Movie Posters in Grid")
+            GenreSelectionView(onSelected: { (viewModel) in
+                addMovieViewModel.genre = viewModel.name
+            }, ignoreGenres: ["All"])
+            
+            MoviePosterGridView(posters: addMovieViewModel.posters, selectedPoster: $addMovieViewModel.poster)
             
         }
         .navigationTitle("Add New Movie")
         .navigationBarItems(trailing: Button("Save") {
+            addMovieViewModel.addMovie {
+                presentationMode.wrappedValue.dismiss()
+            }
         })
         .embedInNavigationView()
     }
