@@ -30,11 +30,12 @@ struct MovieListScreen: View {
             Spacer()
             
             if !movieListViewModel.movies.isEmpty {
-                MovieListView(movies: movieListViewModel.movies)
+                MovieListView(movies: movieListViewModel.movies) { movieId in
+                    movieListViewModel.deleteMovie(movieId: movieId)
+                }
             } else {
                 NoResultView(message: "No movies found")
             }
-            
             Spacer()
             
         }
