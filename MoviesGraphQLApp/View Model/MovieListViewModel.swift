@@ -12,9 +12,9 @@ class MovieListViewModel: ObservableObject {
     
     @Published var movies: [MovieViewModel] = []
     
-    func getAllMovies() {
+    func getAllMovies(genre: String? = nil) {
         
-        Network.shared.apollo.fetch(query: GetAllMoviesQuery()) { [weak self] result in
+        Network.shared.apollo.fetch(query: GetAllMoviesQuery(genre: genre)) { [weak self] result in
             
             switch result {
                 case .success(let graphQLResult):
