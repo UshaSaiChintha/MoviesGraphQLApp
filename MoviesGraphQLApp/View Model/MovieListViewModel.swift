@@ -12,6 +12,19 @@ class MovieListViewModel: ObservableObject {
     
     @Published var movies: [MovieViewModel] = []
     
+    func deleteMovie(movieId: String) {
+        
+        Network.shared.apollo.perform(mutation: DeleteMovieMutation(movieId: movieId)) { [weak self] result in
+            switch result {
+                case .success(_):
+                    self?.getAllMovies()
+                case .failure(let error):
+                    print(error)
+            }
+        }
+        
+    }
+    
     func getAllMovies(genre: String? = nil) {
         
         Network.shared.apollo.fetch(query: GetAllMoviesQuery(genre: genre), cachePolicy: .fetchIgnoringCacheData) { [weak self] result in

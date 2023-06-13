@@ -378,3 +378,140 @@ public final class CreateMovieMutation: GraphQLMutation {
     }
   }
 }
+
+public final class DeleteMovieMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation DeleteMovie($movieId: ID!) {
+      deleteMovie(id: $movieId) {
+        __typename
+        id
+        title
+        poster
+        genre
+        year
+      }
+    }
+    """
+
+  public let operationName: String = "DeleteMovie"
+
+  public var movieId: GraphQLID
+
+  public init(movieId: GraphQLID) {
+    self.movieId = movieId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["movieId": movieId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("deleteMovie", arguments: ["id": GraphQLVariable("movieId")], type: .object(DeleteMovie.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(deleteMovie: DeleteMovie? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "deleteMovie": deleteMovie.flatMap { (value: DeleteMovie) -> ResultMap in value.resultMap }])
+    }
+
+    public var deleteMovie: DeleteMovie? {
+      get {
+        return (resultMap["deleteMovie"] as? ResultMap).flatMap { DeleteMovie(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "deleteMovie")
+      }
+    }
+
+    public struct DeleteMovie: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Movie"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("title", type: .nonNull(.scalar(String.self))),
+          GraphQLField("poster", type: .nonNull(.scalar(String.self))),
+          GraphQLField("genre", type: .nonNull(.scalar(String.self))),
+          GraphQLField("year", type: .nonNull(.scalar(String.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID, title: String, poster: String, genre: String, year: String) {
+        self.init(unsafeResultMap: ["__typename": "Movie", "id": id, "title": title, "poster": poster, "genre": genre, "year": year])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var title: String {
+        get {
+          return resultMap["title"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var poster: String {
+        get {
+          return resultMap["poster"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "poster")
+        }
+      }
+
+      public var genre: String {
+        get {
+          return resultMap["genre"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "genre")
+        }
+      }
+
+      public var year: String {
+        get {
+          return resultMap["year"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "year")
+        }
+      }
+    }
+  }
+}
